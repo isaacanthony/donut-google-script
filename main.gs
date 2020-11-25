@@ -27,8 +27,8 @@ function main() {
     .getDataRange()
     .getValues();
 
-  data.forEach((row) => {
-    if (row[0].toLocaleDateString() == today) {
+  data.filter((row) => row[0].toLocaleDateString() === today)
+    .forEach((row) => {
       Logger.log(row);
 
       MailApp.sendEmail(
@@ -37,6 +37,5 @@ function main() {
         'Hi! Welcome to your new Donut Pairing. ' +
         'Please schedule time to chat when you can.'
       );
-    }
-  });
+    });
 }
